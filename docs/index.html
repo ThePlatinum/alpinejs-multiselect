@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
 </head>
 
 <body>
@@ -24,20 +23,21 @@
                         <span class="block mt-4">This example uses
                             <a href="https://tailwindcss.com/" target="_new" class="text-indigo-600" alt="Tailwind CSS">
                                 Tailwind CSS
-                            </a>, 
+                            </a>,
                             <a href="https://heroicons.com/" target="_new" class="text-indigo-600" alt="Heroicons">
                                 Heroicons
                             </a>
                             and
                             <a href="https://alpinejs.dev/plugins/focus" target="_new" class="text-indigo-600" alt="Alpine's Focus plugin">
                                 Alpine's Focus plugin
-                            </a>.</span>
+                            </a>.
+                        </span>
                         <div class="flex justify-center mt-8">
                             <!-- Define component with preselected options -->
-                            <div class="w-full" x-data="alpineMuliSelect({selected:['te_11', 'te_12'], elementId:'multSelect'})">
+                            <div class="w-full" x-data="alpineMultiSelect({selected:['te_11', 'te_12'], elementId:'multiSelect'})">
 
                                 <!-- Select Options -->
-                                <select class="hidden" id="multSelect">
+                                <select class="hidden" id="multiSelect">
                                     <option value="te_1" data-search="arsenal">Arsenal</option>
                                     <option value="te_2" data-search="aston villa">Aston Villa</option>
                                     <option value="te_3" data-search="Brentford">Brentford</option>
@@ -74,15 +74,13 @@
                                                     <div class="flex flex-auto flex-wrap" x-on:click="open">
                                                         <!-- iterating over selected elements -->
                                                         <template x-for="(option,index) in selectedElms" :key="option.value">
-                                                            <div x-show="index < 2"
-                                                                class="flex justify-center items-center m-1 font-medium py-1 px-2 rounded-full text-indigo-700 bg-indigo-100 border border-indigo-300 ">
-                                                                <div class="text-xs font-normal leading-none max-w-full flex-initial"
-                                                                    x-model="selectedElms[option]" x-text="option.text"></div>
+                                                            <div x-show="index < 2" class="flex justify-center items-center m-1 font-medium py-1 px-2 rounded-full text-indigo-700 bg-indigo-100 border border-indigo-300 ">
+                                                                <div class="text-xs font-normal leading-none max-w-full flex-initial" x-model="selectedElms[option]" x-text="option.text"></div>
                                                                 <div class="flex flex-auto flex-row-reverse">
                                                                     <div x-on:click.stop="remove(index,option)">
                                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                                             <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                                          </svg>
+                                                                        </svg>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -106,12 +104,12 @@
                                                         <button type="button" x-show="!isOpen()" x-on:click="open()" class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                                                              </svg>
+                                                            </svg>
                                                         </button>
                                                         <button type="button" x-show="isOpen()" x-on:click="close()" class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-                                                              </svg>                                  
+                                                            </svg>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -126,12 +124,10 @@
                                                             <div class="mt-1 relative rounded-md shadow-sm">
                                                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                                                     </svg>
                                                                 </div>
-                                                                <input type="text" name="search" autocomplete="off" id="search" x-model.debounce.750ms="search" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border border-indigo-300 rounded-md h-10" placeholder="" @keyup.escape="clear"
-                                                                    @keyup.delete="deselect">
+                                                                <input type="text" name="search" autocomplete="off" id="search" x-model.debounce.750ms="search" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border border-indigo-300 rounded-md h-10" placeholder="" @keyup.escape="clear" @keyup.delete="deselect">
                                                                 <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
                                                                     <kbd class="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400 mr-2" x-on:click="clear">
                                                                         Esc
@@ -145,26 +141,15 @@
                                                         <!-- Options container -->
                                                         <ul class="z-10 mt-0 w-full bg-white shadow-lg max-h-80 rounded-md py-0 text-base ring-1 ring-black ring-opacity-5 focus:outline-none  overflow-y-auto sm:text-sm" tabindex="-1" role="listbox" @keyup.delete="deselect">
                                                             <template x-for="(option,index) in options" :key="option.text">
-                                                                <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-3"
-                                                                    role="option">
-                                                                    <div class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-slate-100"
-                                                                        x-bind:class="option.selected ? 'bg-indigo-100' : ''"
-                                                                        @click="select(index,$event)">
-                                                                        <div x-bind:class="option.selected ? 'border-indigo-600' : ''"
-                                                                            class="flex w-full items-center p-2 pl-2 border-transparent border-l-2 relative">
+                                                                <li class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-3" role="option">
+                                                                    <div class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-slate-100" x-bind:class="option.selected ? 'bg-indigo-100' : ''" @click="select(index,$event)">
+                                                                        <div x-bind:class="option.selected ? 'border-indigo-600' : ''" class="flex w-full items-center p-2 pl-2 border-transparent border-l-2 relative">
                                                                             <div class="w-full items-center flex">
-                                                                                <div class="mx-2 leading-6" x-model="option"
-                                                                                    x-text="option.text"></div>
-                                                                                <span
-                                                                                    class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600"
-                                                                                    x-show="option.selected">
+                                                                                <div class="mx-2 leading-6" x-model="option" x-text="option.text"></div>
+                                                                                <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600" x-show="option.selected">
 
-                                                                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
-                                                                                        viewBox="0 0 20 20" fill="currentColor"
-                                                                                        aria-hidden="true">
-                                                                                        <path fill-rule="evenodd"
-                                                                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                                                            clip-rule="evenodd" />
+                                                                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                                                                                     </svg>
                                                                                 </span>
                                                                             </div>
@@ -183,131 +168,132 @@
 
                             </div>
                         </div>
-
-
                     </div>
                 </div>
 
             </div>
-            <script>
-                document.addEventListener("alpine:init", () => {
-                    Alpine.data("alpineMuliSelect", (obj) => ({
-                        elementId: obj.elementId,
-                        options: [],
-                        selected: obj.selected,
-                        selectedElms: [],
-                        show: false,
-                        search: '',
-                        open() {
-                            this.show = true
-                        },
-                        close() {
-                            this.show = false
-                        },
-                        toggle() {
-                            this.show = !this.show
-                        },
-                        isOpen() {
-                            return this.show === true
-                        },
+        </div>
+    </div>
 
-                        // Initializing component 
-                        init() {
-                            const options = document.getElementById(this.elementId).options;
-                            for (let i = 0; i < options.length; i++) {
+    <script>
+        document.addEventListener("alpine:init", () => {
+            Alpine.data("alpineMultiSelect", (obj) => ({
+                elementId: obj.elementId,
+                options: [],
+                selected: obj.selected,
+                selectedElms: [],
+                show: false,
+                search: '',
+                open() {
+                    this.show = true
+                },
+                close() {
+                    this.show = false
+                },
+                toggle() {
+                    this.show = !this.show
+                },
+                isOpen() {
+                    return this.show === true
+                },
 
-                                this.options.push({
-                                    value: options[i].value,
-                                    text: options[i].innerText,
-                                    search: options[i].dataset.search,
-                                    selected: Object.values(this.selected).includes(options[i].value)
-                                });
+                // Initializing component
+                init() {
+                    const options = document.getElementById(this.elementId).options;
+                    for (let i = 0; i < options.length; i++) {
 
-                                if (this.options[i].selected) {
-                                    this.selectedElms.push(this.options[i])
-                                }
+                        this.options.push({
+                            value: options[i].value,
+                            text: options[i].innerText,
+                            search: options[i].dataset.search,
+                            selected: Object.values(this.selected).includes(options[i].value)
+                        });
+
+                        if (this.options[i].selected) {
+                            this.selectedElms.push(this.options[i])
+                        }
+                    }
+
+                    // searching for the given value
+                    this.$watch("search", (e => {
+                        this.options = []
+                        const options = document.getElementById(this.elementId).options;
+                        Object.values(options).filter((el) => {
+                            var reg = new RegExp(this.search, 'gi');
+                            return el.dataset.search.match(reg)
+                        }).forEach((el) => {
+                            let newel = {
+                                value: el.value,
+                                text: el.innerText,
+                                search: el.dataset.search,
+                                selected: Object.values(this.selected).includes(el.value)
                             }
+                            this.options.push(newel);
 
-                            // searching for the given value
-                            this.$watch("search", (e => {
-                                this.options = []
-                                const options = document.getElementById(this.elementId).options;
-                                Object.values(options).filter((el) => {
-                                    var reg = new RegExp(this.search, 'gi');
-                                    return el.dataset.search.match(reg)
-                                }).forEach((el) => {
-                                    let newel = {
-                                        value: el.value,
-                                        text: el.innerText,
-                                        search: el.dataset.search,
-                                        selected: Object.values(this.selected).includes(el.value)
-                                    }
-                                    this.options.push(newel);
+                        })
+                    }));
+                },
 
-                                })
+                // clear search field
+                clear() {
+                    this.search = ''
+                },
 
+                // deselect selected options
+                deselect() {
+                    setTimeout(() => {
+                        this.selected = []
+                        this.selectedElms = []
+                        Object.keys(this.options).forEach((key) => {
+                            this.options[key].selected = false;
+                        })
+                    }, 100)
+                },
+                // select given option
+                select(index, event) {
+                    if (!this.options[index].selected) {
+                        this.options[index].selected = true;
+                        this.options[index].element = event.target;
+                        this.selected.push(this.options[index].value);
+                        this.selectedElms.push(this.options[index]);
 
-                            }));
-                        },
-                        // clear search field
-                        clear() {
-                            this.search = ''
-                        },
-                        // deselect selected options
-                        deselect() {
-                            setTimeout(() => {
-                                this.selected = []
-                                this.selectedElms = []
-                                Object.keys(this.options).forEach((key) => {
-                                    this.options[key].selected = false;
-                                })
-                            }, 100)
-                        },
-                        // select given option
-                        select(index, event) {
-                            if (!this.options[index].selected) {
-                                this.options[index].selected = true;
-                                this.options[index].element = event.target;
-                                this.selected.push(this.options[index].value);
-                                this.selectedElms.push(this.options[index]);
-
-                            } else {
-                                this.selected.splice(this.selected.lastIndexOf(index), 1);
-                                this.options[index].selected = false
-                                Object.keys(this.selectedElms).forEach((key) => {
-                                    if (this.selectedElms[key].value == this.options[index].value) {
-                                        setTimeout(() => {
-                                            this.selectedElms.splice(key, 1)
-                                        }, 100)
-                                    }
-                                })
+                    } else {
+                        this.selected.splice(this.selected.lastIndexOf(index), 1);
+                        this.options[index].selected = false
+                        Object.keys(this.selectedElms).forEach((key) => {
+                            if (this.selectedElms[key].value == this.options[index].value) {
+                                setTimeout(() => {
+                                    this.selectedElms.splice(key, 1)
+                                }, 100)
                             }
-                        },
-                        // remove from selected option
-                        remove(index, option) {
-                            this.selectedElms.splice(index, 1);
-                            Object.keys(this.options).forEach((key) => {
-                                if (this.options[key].value == option.value) {
-                                    this.options[key].selected = false;
-                                    Object.keys(this.selected).forEach((skey) => {
-                                        if (this.selected[skey] == option.value) {
-                                            this.selected.splice(skey, 1);
-                                        }
-                                    })
+                        })
+                    }
+                },
+                // remove from selected option
+                remove(index, option) {
+                    this.selectedElms.splice(index, 1);
+                    Object.keys(this.options).forEach((key) => {
+                        if (this.options[key].value == option.value) {
+                            this.options[key].selected = false;
+                            Object.keys(this.selected).forEach((skey) => {
+                                if (this.selected[skey] == option.value) {
+                                    this.selected.splice(skey, 1);
                                 }
                             })
-                        },
-                        // filter out selected elements
-                        selectedElements() {
-                            return this.options.filter(op => op.selected === true)
-                        },
-                        // get selected values
-                        selectedValues() {
-                            return this.options.filter(op => op.selected === true).map(el => el.value)
                         }
-                    }));
-                });
-            </script>
+                    })
+                },
+                // filter out selected elements
+                selectedElements() {
+                    return this.options.filter(op => op.selected === true)
+                },
+                // get selected values
+                selectedValues() {
+                    return this.options.filter(op => op.selected === true).map(el => el.value)
+                }
+            }));
+        });
+    </script>
 </body>
 
 </html>
